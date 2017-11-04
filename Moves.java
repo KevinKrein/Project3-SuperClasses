@@ -43,6 +43,8 @@ public abstract class Moves extends Animated{
         return nextPositionHelper(world, destPos, horiz);
     }
 
+
+
     public abstract Point nextPositionHelper(WorldModel world, Point destPos, int horiz);
     public abstract boolean moveToHelper(WorldModel world,
                                          Entity target, EventScheduler scheduler);

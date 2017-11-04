@@ -14,6 +14,16 @@ public class MinerNotFull extends Miner{
         this.resourceCount = 0;
     }
 
+    public void scheduleActions(EventScheduler scheduler,
+                                WorldModel world, ImageStore imageStore)
+    {
+        scheduler.scheduleEvent(this,
+                createActivityAction(world, imageStore),
+                super.getActionPeriod());
+        scheduler.scheduleEvent(this,
+                createAnimationAction(0), super.getAnimationPeriod());
+    }
+
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler)
     {
         Entity notFullTarget = world.findNearest(super.getPosition(),
@@ -28,6 +38,17 @@ public class MinerNotFull extends Miner{
                     super.getActionPeriod());
         }
     }
+
+    /*public Miner transformHelper(WorldModel world, EventScheduler scheduler, ImageStore imageStore)
+    {
+        if (resourceCount >= super.getResourceLimit())
+        {
+            return new MinerFull(super.getID(), super.getResourceLimit(),
+                    super.getPosition(), super.getActionPeriod(), super.getAnimationPeriod(),
+                    super.getImages());
+        }
+        return this;
+    }*/
 
     private boolean transformNotFull(WorldModel world,
                                      EventScheduler scheduler, ImageStore imageStore)

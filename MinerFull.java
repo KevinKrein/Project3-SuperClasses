@@ -70,4 +70,16 @@ public class MinerFull extends Miner{
     {
         return true;
     }
+
+    public void scheduleActions(EventScheduler scheduler,
+                                WorldModel world, ImageStore imageStore)
+    {
+        scheduler.scheduleEvent(this,
+                createActivityAction(world, imageStore),
+                super.getActionPeriod());
+        scheduler.scheduleEvent(this, createAnimationAction(0),
+                super.getAnimationPeriod());
+    }
+
+
 }

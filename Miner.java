@@ -15,8 +15,26 @@ public abstract class Miner extends Moves{
 
     }
 
+    /*public boolean transform(WorldModel world,
+                                     EventScheduler scheduler, ImageStore imageStore)
+    {
+        Miner miner = transformHelper(world, scheduler, imageStore);
+        world.removeEntity(this);
+        scheduler.unscheduleAllEvents(this);
+
+        world.addEntity(miner);
+        miner.scheduleActions(scheduler, world, imageStore);
+        if(this == miner){
+            return true;
+        }
+        return false;
+    }*/
+
     public int getResourceLimit()
     {
         return resourceLimit;
     }
+
+    /*public abstract Miner transformHelper(WorldModel world,
+                                          EventScheduler scheduler, ImageStore imageStore);*/
 }

@@ -70,6 +70,16 @@ public class OreBlob extends Moves{
         return true;
     }
 
+    public void scheduleActions(EventScheduler scheduler,
+                                WorldModel world, ImageStore imageStore)
+    {
+        scheduler.scheduleEvent(this,
+                createActivityAction(world, imageStore),
+                super.getAnimationPeriod());
+        scheduler.scheduleEvent(this,
+                createAnimationAction( 0), super.getAnimationPeriod());
+    }
+
 
 
 }
